@@ -6,6 +6,9 @@ const got = require('got')
 const he = require('he')
 const ical = require('ical')
 
+// self
+const utils = require('./lib/utils')
+
 he.decode.options.isAttributeValue = true
 he.decode.options.strict = true
 
@@ -28,8 +31,6 @@ const makeLocation = (source) => {
   }
 }
 
-const makeId = (uid) => 'alq:' + (1e7 + parseInt(uid, 10)).toString().slice(1)
-
 module.exports = () => got('http://agendadulibre.qc.ca/events.ics')
   .then((x) => {
     const values = []
@@ -41,7 +42,7 @@ module.exports = () => got('http://agendadulibre.qc.ca/events.ics')
       values.push({
         start: new Date(z[r].start).toISOString(),
         end: new Date(z[r].end).toISOString(),
-        _id: makeId(z[r].uid),
+        _id: utils.makeId(z[r].uid),
         summary: decode(z[r].summary),
         url: z[r].url.trim(),
         description: description,
