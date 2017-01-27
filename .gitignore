@@ -1,0 +1,8 @@
+node_modules
+events.*
+foo*
+outs-ical*.txt
+yo.txt
+libpostal
+data
+cli-foo.js

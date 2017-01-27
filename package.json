@@ -1,0 +1,14 @@
+{
+  "name": "vents",
+  "version": "0.0.0",
+  "main": "index.js",
+  "bin": ["cli.js"],
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "got": "^6.7.1",
+    "he": "^1.1.1",
+    "ical": "^0.5.0",
+    "lodash": "^4.17.4",
+    "marked": "^0.3.6"
+  }
+}
