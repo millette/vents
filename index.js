@@ -9,7 +9,7 @@ const ical = require('ical')
 he.decode.options.isAttributeValue = true
 he.decode.options.strict = true
 
-const fix = (str) => he.decode(str).trim()
+const decode = (str) => he.decode(str).trim()
 
 const sorter = (a, b) => {
   if (a.start > b.start) { return 1 }
@@ -18,6 +18,7 @@ const sorter = (a, b) => {
 }
 
 const makeLocation = (source) => {
+  source = source.trim()
   const parts = source.split(', ')
   if (parts.length < 2) { return { source } }
   return {
@@ -27,19 +28,21 @@ const makeLocation = (source) => {
   }
 }
 
+const makeId = (uid) => 'alq:' + (1e7 + parseInt(uid, 10)).toString().slice(1)
+
 module.exports = () => got('http://agendadulibre.qc.ca/events.ics')
   .then((x) => {
-    const z = ical.parseICS(x.body.replace(/\r/g, '\\n').replace(/&amp;/g, '&').replace(/&gt;/g, '>'))
     const values = []
+    const z = ical.parseICS(x.body.replace(/\r/g, '\\n').replace(/&amp;/g, '&').replace(/&gt;/g, '>'))
     let description
     for (let r in z) {
       if (z[r].type !== 'VEVENT') { continue }
-      description = fix(z[r].description)
+      description = decode(z[r].description)
       values.push({
         start: new Date(z[r].start).toISOString(),
         end: new Date(z[r].end).toISOString(),
-        _id: 'alq:' + (1e7 + parseInt(z[r].uid, 10)).toString().slice(1),
-        summary: fix(z[r].summary),
+        _id: makeId(z[r].uid),
+        summary: decode(z[r].summary),
         url: z[r].url.trim(),
         description: description,
         html: marked(he.escape(description)),
