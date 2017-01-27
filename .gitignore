@@ -6,3 +6,5 @@ yo.txt
 libpostal
 data
 cli-foo.js
+.env
+cli-foo7a.js

@@ -2,9 +2,15 @@
   "name": "vents",
   "version": "0.0.0",
   "main": "index.js",
-  "bin": ["cli.js"],
+  "bin": [
+    "cli.js"
+  ],
   "license": "AGPL-3.0",
   "dependencies": {
+    "confidence": "^3.0.2",
+    "couchdb-push": "^2.3.2",
+    "dotenv-safe": "^4.0.3",
+    "glob": "^7.1.1",
     "got": "^6.7.1",
     "he": "^1.1.1",
     "ical": "^0.5.0",
