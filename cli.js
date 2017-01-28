@@ -4,9 +4,11 @@
 const bla = require('.')
 const utils = require('./lib/utils')
 
+const bulk = (data) => data && data.length ? utils.bulk(data, { auth: true }) : false
+const display = (values) => console.log(JSON.stringify(values, null, ' '))
+
 bla()
   .then(utils.diff)
-  .then((values) => {
-    console.log(JSON.stringify(values, null, ' '))
-  })
+  .then(bulk)
+  .then(display)
   .catch(console.error)
