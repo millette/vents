@@ -1,5 +1,10 @@
 'use strict'
 
+// npm
+const updateNotifier = require('update-notifier')
+
+updateNotifier({ pkg: require('./package.json') }).notify()
+
 // self
 const bla = require('.')
 const utils = require('./lib/utils')
