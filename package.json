@@ -5,6 +5,12 @@
   "bin": [
     "cli.js"
   ],
+  "scripts": {
+    "start": "standard && node server",
+    "lint": "standard",
+    "test": "standard && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
   "license": "AGPL-3.0",
   "dependencies": {
     "confidence": "^3.0.2",
@@ -15,6 +21,17 @@
     "he": "^1.1.1",
     "ical": "^0.5.0",
     "lodash": "^4.17.4",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "update-notifier": "^1.0.3"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-eslint": "^7.1.1",
+    "coveralls": "^2.11.15",
+    "nyc": "^10.1.2",
+    "standard": "^8.6.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
