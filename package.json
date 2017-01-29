@@ -17,12 +17,19 @@
     "couchdb-push": "^2.3.2",
     "dotenv-safe": "^4.0.3",
     "glob": "^7.1.1",
+    "glue": "^4.1.0",
     "got": "^6.7.1",
+    "h2o2": "^5.4.0",
+    "hapi": "^16.1.0",
     "he": "^1.1.1",
     "ical": "^0.5.0",
+    "inert": "^4.1.0",
     "lodash": "^4.17.4",
+    "lodash-vision": "^0.2.0",
     "marked": "^0.3.6",
-    "update-notifier": "^1.0.3"
+    "update-notifier": "^1.0.3",
+    "vision": "^4.1.1",
+    "wreck": "^10.0.0"
   },
   "devDependencies": {
     "ava": "^0.17.0",
