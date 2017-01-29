@@ -50,7 +50,7 @@ test(
 test.only('makeLocation, no comma', t => {
   const result = utils.makeLocation('X')
   t.is(result.source, 'X')
-  t.is(result.given, '')
+  t.is(result.given, undefined)
   t.is(result.city, 'X')
 })
 
@@ -64,6 +64,6 @@ test.only('makeLocation', t => {
 test.only('makeLocation, just comma', t => {
   const result = utils.makeLocation(', Y')
   t.is(result.source, ', Y')
-  t.is(result.given, '')
+  t.is(result.given, undefined)
   t.is(result.city, 'Y')
 })
