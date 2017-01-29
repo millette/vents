@@ -3,11 +3,11 @@
 const utils = require('../../lib/utils')
 const Boom = require('boom')
 
-exports.register = (server, options, next) => {
-  const fetchWeek = function (request, reply) {
-    reply(utils.week(request.params.week, { onlyBody: true }).catch((e) => Boom.badRequest(e)))
-  }
+const fetchWeek = function (request, reply) {
+  reply(utils.week(request.params.week, { onlyBody: true }).catch((e) => Boom.badRequest(e)))
+}
 
+exports.register = (server, options, next) => {
   server.route({
     method: 'GET',
     path: '/',
@@ -18,7 +18,7 @@ exports.register = (server, options, next) => {
     method: 'GET',
     path: '/week/{week}',
     config: { pre: [{ method: fetchWeek, assign: 'week' }] },
-    handler: function (request, reply) { reply.view('ack', request.pre.week) }
+    handler: function (request, reply) { reply.view('ack', request.pre) }
   })
 
   next()
