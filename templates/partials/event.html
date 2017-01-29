@@ -3,5 +3,4 @@
   <h3><%- new Date(data.row.doc.start) %> - <%- new Date(data.row.doc.end) %> <small> <%- data.row.doc.duration %></small></h3>
   <p><%- data.row.doc.location.given %></p>
   <%= data.row.doc.html %>
-  <pre><%- JSON.stringify(data.row.doc, null, '  ') %></pre>
 </div>

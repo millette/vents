@@ -18,7 +18,9 @@ exports.register = (server, options, next) => {
     method: 'GET',
     path: '/week/{week}',
     config: { pre: [{ method: fetchWeek, assign: 'week' }] },
-    handler: function (request, reply) { reply.view('ack', request.pre) }
+    handler: function (request, reply) {
+      reply.view('ack', { partial: 'event', pre: request.pre })
+    }
   })
 
   next()

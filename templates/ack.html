@@ -13,10 +13,7 @@
   </style>
 </head>
 <body>
-  <%
-    data.week.rows.forEach((row) => {
-      main.duration(row.doc)
-  %>
-  <%= partials.event(Object.assign(data, { row: row, week: undefined })) %>
+  <% data.pre.week.rows.forEach((row) => { main.duration(row.doc) %>
+  <%= partials[data.partial](Object.assign(data, { row: row, pre: { week: undefined } })) %>
   <% }) %>
 </body>
