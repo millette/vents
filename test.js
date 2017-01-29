@@ -28,3 +28,8 @@ test('getIds, only body', async t => {
   const result = await utils.getIds({ onlyBody: true })
   t.truthy(result.rows.length)
 })
+
+test('getIds, only rows', async t => {
+  const result = await utils.getIds({ onlyRows: true })
+  t.truthy(result.length)
+})
