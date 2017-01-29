@@ -32,3 +32,17 @@ test('getIds, only rows', async t => {
   const result = await utils.getIds({ onlyRows: true })
   t.truthy(result.length)
 })
+
+test('week, only rows', async t => {
+  const result = await utils.week('2017-01-01', { onlyRows: true })
+  console.log(result)
+  t.truthy(result.length)
+})
+
+test.only(
+  'week, only rows fail',
+  async t => await t.throws(
+    utils.week('2017s-01-01', { onlyRows: true }),
+    'Malformed date.'
+  )
+)
