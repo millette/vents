@@ -5,7 +5,10 @@
     <dt>Fin</dt><dd><%- new Date(data.row.doc.end) %></dd>
     <dt>Durée</dt><dd><%- data.row.doc.duration %></dd>
     <% if (data.row.doc.location) { %>
-      <% if (data.row.doc.location.given || data.row.doc.location.source) { %>
+      <% if (
+        (data.row.doc.location.given || data.row.doc.location.source) &&
+        ((data.row.doc.location.given || data.row.doc.location.source) !== data.row.doc.location.city)
+      ) { %>
       <dt>Lieu</dt><dd><%- data.row.doc.location.given || data.row.doc.location.source %></dd>
       <% } %>
       <% if (data.row.doc.location.city) { %>
