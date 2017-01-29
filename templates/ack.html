@@ -4,26 +4,39 @@
   <meta charset="utf-8">
   <style>
     body {
-      margin: 0.5em;
+      margin: 2em;
     }
 
-    div {
-      margin: 2.5em;
+    div.semaine {
+      margin: 1em 0;
+    }
+
+    div.event {
+      margin: 2.5em 0;
     }
   </style>
 </head>
 <body>
+  <div class="semaine">
+  <h2>Semaine en cours</h2>
   <% if (data.pre.week && data.pre.week.rows && data.pre.week.rows.length) { %>
-    <h2>Semaine en cours <small><%- data.pre.week.rows.length %> événements</small></h2>
-    <% data.pre.week.rows.forEach((row) => { main.duration(row.doc) %>
-    <%= partials[data.partial](Object.assign(data, { row })) %>
-    <% }) %>
+    <div>
+      <h3><%- data.pre.week.rows.length %> événements</h3>
+      <% data.pre.week.rows.forEach((row) => { main.duration(row.doc) %>
+      <%= partials[data.partial](Object.assign(data, { row })) %>
+      <% }) %>
+    </div>
   <% } %>
-
+  </div>
+  <div class="semaine">
+  <h2>Semaine dernière</h2>
   <% if (data.pre.previousWeek && data.pre.previousWeek.rows && data.pre.previousWeek.rows.length) { %>
-    <h2>Semaine dernière <small><%- data.pre.previousWeek.rows.length %> événements</small></h2>
+    <div>
+    <h3><%- data.pre.previousWeek.rows.length %> événements</h3>
     <% data.pre.previousWeek.rows.forEach((row) => { main.duration(row.doc) %>
     <%= partials[data.partial](Object.assign(data, { row })) %>
     <% }) %>
+    </div>
   <% } %>
+  </div>
 </body>
