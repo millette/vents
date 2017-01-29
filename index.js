@@ -1,6 +1,10 @@
 'use strict'
 
-// self
-const utils = require('./lib/utils')
+const Manifest = require('./manifest')
 
-module.exports = utils.fetch
+// npm
+const Glue = require('glue')
+
+const composeOptions = { relativeTo: __dirname }
+
+module.exports = Glue.compose.bind(Glue, Manifest.get('/'), composeOptions)

@@ -1,6 +1,5 @@
 'use strict'
 import test from 'ava'
-import fn from './'
 import utils from './lib/utils'
 
 test('makeId', t => {
@@ -9,7 +8,7 @@ test('makeId', t => {
 })
 
 test('all', async t => {
-  const result = await fn()
+  const result = await utils.fetch()
   t.is(typeof result, 'object')
   t.truthy(result.length)
   const keys = Object.keys(result[0]).sort()
