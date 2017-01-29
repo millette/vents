@@ -2,16 +2,24 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <style>
+    body {
+      margin: 0.5em;
+    }
+
+    div {
+      margin: 1.5em;
+    }
+  </style>
 </head>
 <body>
-  <div style="margin: 0.5em;">
-    <% data.rows.forEach((row) => { %>
-    <div style="margin: 1.5em;">
-      <h2><a href="<%- row.doc.url %>"><small><%- row.doc.location.city %></small> <%- row.doc.summary %></a></h2>
-      <h3><%- new Date(row.doc.start) %> - <%- new Date(row.doc.end) %></h3>
-      <p><%- row.doc.location.given %></p>
-      <%= row.doc.html %>
-    </div>
-    <% }) %>
+  <% data.rows.forEach((row) => { %>
+  <div>
+    <h2><a href="<%- row.doc.url %>"><small><%- row.doc.location.city || row.doc.location.source %></small> <%- row.doc.summary %></a></h2>
+    <h3><%- new Date(row.doc.start) %> - <%- new Date(row.doc.end) %></h3>
+    <p><%- row.doc.location.given %></p>
+    <%= row.doc.html %>
+    <pre><%- JSON.stringify(row.doc, null, '  ') %></pre>
   </div>
+  <% }) %>
 </body>

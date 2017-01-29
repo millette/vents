@@ -39,10 +39,31 @@ test('week, only rows', async t => {
   t.truthy(result.length)
 })
 
-test.only(
+test(
   'week, only rows fail',
   async t => await t.throws(
     utils.week('2017s-01-01', { onlyRows: true }),
     'Malformed date.'
   )
 )
+
+test.only('makeLocation, no comma', t => {
+  const result = utils.makeLocation('X')
+  t.is(result.source, 'X')
+  t.is(result.given, '')
+  t.is(result.city, 'X')
+})
+
+test.only('makeLocation', t => {
+  const result = utils.makeLocation('X, Y')
+  t.is(result.source, 'X, Y')
+  t.is(result.given, 'X')
+  t.is(result.city, 'Y')
+})
+
+test.only('makeLocation, just comma', t => {
+  const result = utils.makeLocation(', Y')
+  t.is(result.source, ', Y')
+  t.is(result.given, '')
+  t.is(result.city, 'Y')
+})
