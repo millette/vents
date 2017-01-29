@@ -5,25 +5,36 @@ const DRY_RUN = true
 // self
 const utils = require('./lib/utils')
 
-let bulk
 let fixDocs
+let bulk
 
 if (DRY_RUN) {
+  fixDocs = (x) => {
+    let missingCities = 0
+    x.forEach((doc) => {
+      if (!doc.location.city) {
+        ++missingCities
+        console.error(`Missing city: ${doc._id}`)
+      }
+    })
+    if (missingCities) {
+      console.log(`${missingCities} missing cities.
+You should probably run it with DRY_RUN = false`)
+    }
+    return x
+  }
   bulk = (data) => `Dry run. Found ${data.length} events in db.`
-  fixDocs = (x) => x
 } else {
-  bulk = (data) => utils.bulk(data, { onlyBody: true, auth: true })
   fixDocs = (x) => x.map((doc) => {
     doc.html = utils.makeHtml(doc.description)
     doc.location = utils.makeLocation(doc.location.source)
     return doc
   })
+  bulk = (data) => utils.bulk(data, { onlyBody: true, auth: true })
 }
 
 utils.getIds({ onlyDocs: true, query: { include_docs: true, reduce: false } })
   .then(fixDocs)
   .then(bulk)
-  .then((x) => {
-    console.log(x)
-  })
+  .then(console.log)
   .catch(console.error)
