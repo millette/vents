@@ -1,9 +1,16 @@
 # TODO
 
+## First
+* Readme
+* Setup travis
+* Setup coveralls
+* Setup gemnasium
+
 ## Data cleanup
 * Fix markdown html using utils.autoParagraphs()
 * Fix markdown config for html
 * Fix locations
+* Summary -> Title (also fix related templates)
 
 ## Lists
 * GULs (aggregator)
