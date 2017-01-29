@@ -47,23 +47,40 @@ test(
   )
 )
 
-test.only('makeLocation, no comma', t => {
+test('makeLocation, no comma', t => {
   const result = utils.makeLocation('X')
   t.is(result.source, 'X')
   t.is(result.given, undefined)
   t.is(result.city, 'X')
 })
 
-test.only('makeLocation', t => {
+test('makeLocation', t => {
   const result = utils.makeLocation('X, Y')
   t.is(result.source, 'X, Y')
   t.is(result.given, 'X')
   t.is(result.city, 'Y')
 })
 
-test.only('makeLocation, just comma', t => {
+test('makeLocation, just comma y', t => {
   const result = utils.makeLocation(', Y')
   t.is(result.source, ', Y')
   t.is(result.given, undefined)
   t.is(result.city, 'Y')
+})
+
+test.only('makeLocation, just comma', t => {
+  const result = utils.makeLocation(', ')
+  t.is(result.source, ',')
+  t.is(result.given, undefined)
+  t.is(result.city, undefined)
+})
+
+test('makeLocation empty', t => {
+  const result = utils.makeLocation('')
+  t.is(result, undefined)
+})
+
+test('makeLocation undefined', t => {
+  const result = utils.makeLocation()
+  t.is(result, undefined)
 })
