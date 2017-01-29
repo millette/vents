@@ -13,7 +13,7 @@ ddocManager(Config, function (err, resp) {
 Composer((err, server) => {
   if (err) { throw err }
 
-  server.register(['inert', 'vision'].map((dep) => require(dep)), (err) => {
+  server.register(['vision'].map((dep) => require(dep)), (err) => {
     if (err) { throw err }
     server.views({
       engines: { html: require('lodash-vision') },

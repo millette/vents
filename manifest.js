@@ -15,9 +15,10 @@ const manifest = {
     port: Config.get('/port/web')
   }],
   registrations: [
-    { plugin: 'h2o2' },
     { plugin: 'inert' },
-    { plugin: 'vision' }
+    { plugin: 'vision' },
+    { plugin: './server/web/index' },
+    { plugin: './server/main/index' }
   ]
 }
 

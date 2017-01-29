@@ -1,0 +1,8 @@
+<% data.rows.forEach((row) => { %>
+<div style="margin: 1.5em;">
+  <h2><a href="<%- row.doc.url %>"><small><%- row.doc.location.city %></small> <%- row.doc.summary %></a></h2>
+  <h3><%- new Date(row.doc.start) %> - <%- new Date(row.doc.end) %></h3>
+  <p><%- row.doc.location.given %></p>
+  <%= row.doc.html %>
+</div>
+<% }) %>
