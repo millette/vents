@@ -1,5 +1,8 @@
 'use strict'
 
+console.log('We ran this already, but thanks.')
+
+/*
 // npm
 const updateNotifier = require('update-notifier')
 
@@ -24,3 +27,4 @@ utils.getIds({ onlyDocs: true, query: { include_docs: true, reduce: false } })
     console.log(x)
   })
   .catch(console.error)
+*/

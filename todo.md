@@ -7,9 +7,7 @@
 * Setup gemnasium
 
 ## Data cleanup
-* Fix markdown html using utils.autoParagraphs()
 * Fix markdown config for html
-* Fix locations
 * Summary -> Title (also fix related templates)
 
 ## Lists
@@ -22,6 +20,7 @@
 
 ## Events
 * Meetup.com
+* Update future adl events (or detect changes and apply?)
 
 ## Email
 * Template
