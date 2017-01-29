@@ -1,6 +1,17 @@
 <div>
   <h2><a href="<%- data.row.doc.url %>"><small><%- data.row.doc.location ? data.row.doc.location.city || data.row.doc.location.source : '' %></small> <%- data.row.doc.summary %></a></h2>
-  <h3><%- new Date(data.row.doc.start) %> - <%- new Date(data.row.doc.end) %> <small> <%- data.row.doc.duration %></small></h3>
-  <p><%- data.row.doc.location.given %></p>
+  <dl>
+    <dt>Début</dt><dd><%- new Date(data.row.doc.start) %></dd>
+    <dt>Fin</dt><dd><%- new Date(data.row.doc.end) %></dd>
+    <dt>Durée</dt><dd><%- data.row.doc.duration %></dd>
+    <% if (data.row.doc.location) { %>
+      <% if (data.row.doc.location.given || data.row.doc.location.source) { %>
+      <dt>Lieu</dt><dd><%- data.row.doc.location.given || data.row.doc.location.source %></dd>
+      <% } %>
+      <% if (data.row.doc.location.city) { %>
+      <dt>Ville</dt><dd><%- data.row.doc.location.city %></dd>
+      <% } %>
+    <% } %>
+  </dl>
   <%= data.row.doc.html %>
 </div>
