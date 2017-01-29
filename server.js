@@ -19,6 +19,7 @@ Composer((err, server) => {
       engines: { html: require('lodash-vision') },
       path: 'templates',
       partialsPath: 'templates/partials',
+      helpersPath: 'templates/helpers',
       isCached: Config.get('/cache/web')
     })
 

@@ -13,13 +13,10 @@
   </style>
 </head>
 <body>
-  <% data.rows.forEach((row) => { %>
-  <div>
-    <h2><a href="<%- row.doc.url %>"><small><%- row.doc.location ? row.doc.location.city || row.doc.location.source : '' %></small> <%- row.doc.summary %></a></h2>
-    <h3><%- new Date(row.doc.start) %> - <%- new Date(row.doc.end) %></h3>
-    <p><%- row.doc.location.given %></p>
-    <%= row.doc.html %>
-    <pre><%- JSON.stringify(row.doc, null, '  ') %></pre>
-  </div>
+  <%
+    data.week.rows.forEach((row) => {
+      main.duration(row.doc)
+  %>
+  <%= partials.event(Object.assign(data, { row: row, week: undefined })) %>
   <% }) %>
 </body>
