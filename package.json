@@ -13,6 +13,7 @@
   },
   "license": "AGPL-3.0",
   "dependencies": {
+    "boom": "^4.2.0",
     "confidence": "^3.0.2",
     "couchdb-push": "^2.3.2",
     "dotenv-safe": "^4.0.3",
