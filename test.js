@@ -35,7 +35,6 @@ test('getIds, only rows', async t => {
 
 test('week, only rows', async t => {
   const result = await utils.week('2017-01-01', { onlyRows: true })
-  console.log(result)
   t.truthy(result.length)
 })
 
@@ -68,7 +67,7 @@ test('makeLocation, just comma y', t => {
   t.is(result.city, 'Y')
 })
 
-test.only('makeLocation, just comma', t => {
+test('makeLocation, just comma', t => {
   const result = utils.makeLocation(', ')
   t.is(result.source, ',')
   t.is(result.given, undefined)
