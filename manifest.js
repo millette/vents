@@ -8,7 +8,10 @@ const manifest = {
   $meta: 'This file defines GlassJaw.',
   server: {
     app: { siteTitle: Config.get('/app/siteTitle') },
-    debug: { log: ['error'] }
+    debug: {
+      request: ['error'],
+      log: ['error']
+    }
   },
   connections: [{
     labels: ['web'],
