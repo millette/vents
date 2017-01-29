@@ -9,8 +9,8 @@ updateNotifier({ pkg: require('./package.json') }).notify()
 const bla = require('.')
 const utils = require('./lib/utils')
 
-const bulk = (data) => data && data.length ? utils.bulk(data, { auth: true }) : false
-const display = (values) => console.log(JSON.stringify(values, null, ' '))
+const bulk = (data) => data && data.length ? utils.bulk(data, { auth: true }) : { body: false }
+const display = (values) => console.log(JSON.stringify(values.body, null, ' '))
 
 bla()
   .then(utils.diff)
