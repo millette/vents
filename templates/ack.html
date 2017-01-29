@@ -13,7 +13,17 @@
   </style>
 </head>
 <body>
-  <% data.pre.week.rows.forEach((row) => { main.duration(row.doc) %>
-  <%= partials[data.partial](Object.assign(data, { row: row, pre: { week: undefined } })) %>
-  <% }) %>
+  <% if (data.pre.week && data.pre.week.rows && data.pre.week.rows.length) { %>
+    <h2>Semaine en cours <small><%- data.pre.week.rows.length %> événements</small></h2>
+    <% data.pre.week.rows.forEach((row) => { main.duration(row.doc) %>
+    <%= partials[data.partial](Object.assign(data, { row })) %>
+    <% }) %>
+  <% } %>
+
+  <% if (data.pre.previousWeek && data.pre.previousWeek.rows && data.pre.previousWeek.rows.length) { %>
+    <h2>Semaine dernière <small><%- data.pre.previousWeek.rows.length %> événements</small></h2>
+    <% data.pre.previousWeek.rows.forEach((row) => { main.duration(row.doc) %>
+    <%= partials[data.partial](Object.assign(data, { row })) %>
+    <% }) %>
+  <% } %>
 </body>

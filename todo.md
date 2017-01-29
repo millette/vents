@@ -20,6 +20,10 @@
 * Template
 * Subscription (unsub, verification, etc.)
 
+## Revues de presse
+* wiki facil
+* retrouver vieux code..?
+
 ## Aggregator
 * GULs' blogs
 
@@ -27,3 +31,7 @@
 * Fetch events every week
 * Produce newsletter every week
 * Send email
+
+## Data processing
+* Calais
+* etc.

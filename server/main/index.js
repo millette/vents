@@ -3,8 +3,16 @@
 const utils = require('../../lib/utils')
 const Boom = require('boom')
 
+const getWeek = (week) => utils.week(week, { onlyBody: true }).catch((e) => Boom.badRequest(e))
+
 const fetchWeek = function (request, reply) {
-  reply(utils.week(request.params.week, { onlyBody: true }).catch((e) => Boom.badRequest(e)))
+  reply(getWeek(request.params.week))
+}
+
+const fetchPreviousWeek = function (request, reply) {
+  reply(getWeek(new Date(Date.parse(request.params.week) - utils.weekms)
+    .toISOString()
+    .split('T')[0]))
 }
 
 exports.register = (server, options, next) => {
@@ -18,6 +26,20 @@ exports.register = (server, options, next) => {
     method: 'GET',
     path: '/week/{week}',
     config: { pre: [{ method: fetchWeek, assign: 'week' }] },
+    handler: function (request, reply) {
+      reply.view('ack', { partial: 'event', pre: request.pre })
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/newsletter/{week}',
+    config: {
+      pre: [
+        { method: fetchWeek, assign: 'week' },
+        { method: fetchPreviousWeek, assign: 'previousWeek' }
+      ]
+    },
     handler: function (request, reply) {
       reply.view('ack', { partial: 'event', pre: request.pre })
     }
