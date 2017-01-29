@@ -9,3 +9,5 @@ cli-foo.js
 .env
 cli-foo7a.js
 .nyc_output
+fixed.json
+fixing.result.json
