@@ -15,6 +15,7 @@ const config = {
   $meta: 'This file configures GlassJaw.',
   projectName: 'glassjaw-v2',
   app: { siteTitle: process.env.SITETITLE },
+  calais: { key: process.env.CALAIS },
   db: {
     url: process.env.DBURL,
     name: process.env.DBNAME,
