@@ -3307,6 +3307,10 @@ progress@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
 
+promise-parallel-throttle@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/promise-parallel-throttle/-/promise-parallel-throttle-2.2.0.tgz#58ac5dc184778336ddb79bff4197dcebf6ab3bd1"
+
 pseudomap@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
