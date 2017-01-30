@@ -7,6 +7,7 @@ const utils = require('./lib/utils')
 
 // npm
 const Throttle = require('promise-parallel-throttle')
+const delay = require('delay')
 
 /*
 const str = `Contribuez à l’enrichissement de Wikisource, une bibliothèque numérique mondiale, par l’édition de textes québécois en format wiki. Encadrement et formation offerts sur place gratuitement!
@@ -34,12 +35,28 @@ let bulk
 
 const filterDocs = (x) => x.filter((doc) => !doc.calais)
 
+const woot = (doc) => {
+  console.log(Date(), 'woot!')
+  return delay(2000)
+    .then(() => utils.calais(doc.description))
+    .then((calais) => {
+      console.log(doc._id, calais.headers.date, Date())
+      doc.calais = calais.body
+      return doc
+    })
+    .catch((e) => {
+      console.log('oups', doc._id, e)
+      return doc
+    })
+}
+
 if (DRY_RUN) {
   // fixDocs = (x) => x
   fixDocs = (x) => Throttle.all(x.map((doc) => {
     // doc.calais = utils.calais(doc.description)
     // return doc
-    return utils.calais.bind(null, doc.description)
+    return woot.bind(null, doc)
+    // return utils.calais.bind(null, doc.description)
 
 /*
       .then((calais) => {
@@ -54,7 +71,8 @@ if (DRY_RUN) {
 */
   }), 1)
   bulk = (data) => {
-    // console.log(data[0].calais)
+    console.log(data[1].calais)
+    console.log(data[2].calais)
     return `Dry run. Found ${data.length} events without calais in db.`
   }
 } else {
@@ -66,7 +84,7 @@ if (DRY_RUN) {
   bulk = (data) => utils.bulk(data, { onlyBody: true, auth: true })
 }
 
-utils.getIds({ onlyDocs: true, query: { limit: 1, include_docs: true, reduce: false } })
+utils.getIds({ onlyDocs: true, query: { limit: 3, include_docs: true, reduce: false } })
   .then(filterDocs)
   .then(fixDocs)
   .then(bulk)
