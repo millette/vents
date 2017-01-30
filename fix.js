@@ -10,13 +10,7 @@ let bulk
 
 if (DRY_RUN) {
   fixDocs = (x) => {
-    let missingCities = 0
-    x.forEach((doc) => {
-      if (!doc.location.city) {
-        ++missingCities
-        console.error(`Missing city: ${doc._id}`)
-      }
-    })
+    const missingCities = x.filter((doc) => !doc.location.city).length
     if (missingCities) {
       console.log(`${missingCities} missing cities.
 You should probably run it with DRY_RUN = false`)
