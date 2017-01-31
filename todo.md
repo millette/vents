@@ -46,3 +46,6 @@
 * Hapi like (code/lab) tests, but with ava?
 * Improve coverage
 * Test ddoc (handle global emit())
+
+## Refactor
+* Move some lib/utils functions to lib/adl (agendadulibre)
