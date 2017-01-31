@@ -16,6 +16,7 @@ const config = {
   projectName: 'glassjaw-v2',
   app: { siteTitle: process.env.SITETITLE },
   calais: { key: process.env.CALAIS },
+  meetup: { key: process.env.MEETUPCOM },
   db: {
     url: process.env.DBURL,
     name: process.env.DBNAME,
