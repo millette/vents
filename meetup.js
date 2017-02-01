@@ -22,7 +22,10 @@ meetupApi.similarGroups('Linux-Montreal')
   .catch(console.error)
 */
 
-meetupApi.findQcGroups(34)
+meetupApi.findQcGroups({
+  offset: 1,
+  category: 35
+})
   .then((x) => {
     console.log('fg l:', x.headers)
     console.log('fg l:', x.body.length)
