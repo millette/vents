@@ -5,7 +5,7 @@ const meetupApi = require('./lib/meetup-api')
 const utils = require('./lib/utils')
 
 /*
-meetupApi.getGroups('Linux-Montreal')
+meetupApi.getGroup('Linux-Montreal')
   .then((x) => {
     console.log('h:', x.headers)
     console.log('b:', JSON.stringify(x.body, null, '  '))
@@ -13,16 +13,15 @@ meetupApi.getGroups('Linux-Montreal')
   .catch(console.error)
 */
 
-/*
 meetupApi.similarGroups('Linux-Montreal')
   .then((x) => {
     console.log('sim h:', x.headers)
     console.log('sim l:', x.body.length)
-    // console.log('sim b:', JSON.stringify(x.body, null, '  '))
+    console.log('sim b:', JSON.stringify(x.body, null, '  '))
   })
   .catch(console.error)
-*/
 
+/*
 meetupApi.findQcGroups()
   .then((x) => x.body.map((row) => {
     delete row.score
@@ -32,3 +31,4 @@ meetupApi.findQcGroups()
   .then(utils.bulk)
   .then((x) => console.log(JSON.stringify(x.body, null, '  ')))
   .catch(console.error)
+*/
