@@ -2,6 +2,7 @@
 
 // self
 const meetupApi = require('./lib/meetup-api')
+const utils = require('./lib/utils')
 
 /*
 meetupApi.getGroups('Linux-Montreal')
@@ -23,10 +24,11 @@ meetupApi.similarGroups('Linux-Montreal')
 */
 
 meetupApi.findQcGroups()
-  .then((x) => {
-    console.log('fg l:', x.headers)
-    console.log('fg l:', x.body.length)
-    console.log('sim b:', JSON.stringify(x.body[0], null, '  '))
-    console.log('sim z:', JSON.stringify(x.body[x.body.length - 1], null, '  '))
-  })
+  .then((x) => x.body.map((row) => {
+    delete row.score
+    row._id = ['mc', row.id].join(':')
+    return row
+  }))
+  .then(utils.bulk)
+  .then((x) => console.log(JSON.stringify(x.body, null, '  ')))
   .catch(console.error)
