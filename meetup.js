@@ -2,7 +2,7 @@
 
 // self
 const meetupApi = require('./lib/meetup-api')
-const utils = require('./lib/utils')
+// const utils = require('./lib/utils')
 
 /*
 meetupApi.getGroup('Linux-Montreal')
