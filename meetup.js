@@ -13,6 +13,7 @@ meetupApi.getGroup('Linux-Montreal')
   .catch(console.error)
 */
 
+/*
 meetupApi.similarGroups('Linux-Montreal')
   .then((x) => {
     console.log('sim h:', x.headers)
@@ -20,6 +21,7 @@ meetupApi.similarGroups('Linux-Montreal')
     console.log('sim b:', JSON.stringify(x.body, null, '  '))
   })
   .catch(console.error)
+*/
 
 /*
 meetupApi.findQcGroups()
@@ -32,3 +34,11 @@ meetupApi.findQcGroups()
   .then((x) => console.log(JSON.stringify(x.body, null, '  ')))
   .catch(console.error)
 */
+
+meetupApi.allEvents('Linux-Montreal')
+  .then((x) => {
+    console.log('sim h:', x.headers)
+    console.log('sim l:', x.body.length)
+    console.log('sim b:', JSON.stringify(x.body[0], null, '  '))
+  })
+  .catch(console.error)
