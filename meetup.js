@@ -35,6 +35,11 @@ meetupApi.findQcGroups()
   .catch(console.error)
 */
 
+meetupApi.findQcGroups()
+  .then((x) => console.log(JSON.stringify(x.headers, null, '  ')))
+  .catch(console.error)
+
+/*
 meetupApi.allEvents('Linux-Montreal')
   .then((x) => {
     console.log('sim h:', x.headers)
@@ -42,3 +47,4 @@ meetupApi.allEvents('Linux-Montreal')
     console.log('sim b:', JSON.stringify(x.body[0], null, '  '))
   })
   .catch(console.error)
+*/
