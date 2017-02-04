@@ -1,7 +1,7 @@
 'use strict'
 
 // self
-const meetupApi = require('./lib/meetup-api')
+// const meetupApi = require('./lib/meetup-api')
 const utils = require('./lib/utils')
 
 /*
@@ -63,27 +63,25 @@ meetupApi.events({ group: 'Linux-Montreal', status: 'upcoming' })
   .catch(console.error)
 */
 
-const pastEvents = (group) => meetupApi.events({ group: group, status: 'past' })
-  .then((x) => x.body.map((y) => {
-    y._id = 'mce:' + y.id
-    delete y.status
-    return y
-  }))
-  .then(utils.bulk)
-  .then((x) => x.body)
-//  .then((x) => console.log(JSON.stringify(x.body, null, '  ')))
-//  .catch(console.error)
-
-// pastEvents('Linux-Montreal')
-
 /*
-utils.knownMeetups()
-  .then((a) => {
-    // console.log(typeof a, a.length, a[0], typeof a[0])
-    console.log(a.join('\n'))
-  })
-  .catch(console.error)
-*/
+const pastEvents = (group) => {
+  let headers
+  return meetupApi.events({ group: group, status: 'past' })
+    .then((x) => {
+      headers = x.headers
+      return x.body.map((y) => {
+        y._id = 'mce:' + y.id
+        delete y.status
+        return y
+      })
+    })
+    .then(utils.bulk)
+    .then((x) => {
+      x.headers = headers
+      return x
+    })
+    .catch((e) => console.error('pastEvents err:', e))
+}
 
 const fetchAllGroupEvents = () => utils.knownMeetups()
   .then((groups) => {
@@ -91,15 +89,18 @@ const fetchAllGroupEvents = () => utils.knownMeetups()
       query: pastEvents,
       next: () => groups.pop() || false,
       first: () => groups.pop() || false
-      // first: () => groups.pop() || false
-      /*
-      // next: groups.pop() || false,
-      next: false,
-      first: groups.pop() || false
-      */
     })
   })
+  .catch((e) => console.error('fetchAllGroupEvents err:', e))
 
 fetchAllGroupEvents()
   .then((x) => console.log(JSON.stringify(x, null, '  ')))
+  .catch((e) => console.error('err:', e))
+*/
+
+utils.knownMeetups()
+  .then((a) => {
+    // console.log(typeof a, a.length, a[0], typeof a[0])
+    console.log(a.join('\n'))
+  })
   .catch(console.error)
