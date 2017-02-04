@@ -1,7 +1,7 @@
 'use strict'
 
 // self
-// const meetupApi = require('./lib/meetup-api')
+const meetupApi = require('./lib/meetup-api')
 const utils = require('./lib/utils')
 
 /*
@@ -107,7 +107,29 @@ utils.knownMeetups()
   .catch(console.error)
 */
 
-utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group_level: 1 } })
+/*
+utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group: true } })
   .then((x) => x.filter((y) => y.value === 200).map((y) => y.key))
-  .then((x) => console.log(x))
+  .then((groups) =>
+    meetupApi.recursor({
+      query: meetupApi.pastEvents,
+      next: () => groups.pop() || false,
+      first: () => groups.pop() || false
+    })
+  )
+  .then((a) => {
+    console.log(a.body.length)
+  })
   .catch(console.error)
+*/
+
+meetupApi.pastEventsPage({
+// scroll=since%3A2014-12-20T17%3A00%3A00.000-05%3A00
+  // scroll: 'since:2014-12-20T17:00:00.000-05:00',
+  scroll: 'since:2017-02-18T14:00:00.000-05:00',
+  group: 'compgames'
+})
+  .then((x) => {
+    console.log(x.headers)
+    console.log(x.body.length)
+  })
