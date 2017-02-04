@@ -98,9 +98,16 @@ fetchAllGroupEvents()
   .catch((e) => console.error('err:', e))
 */
 
+/*
 utils.knownMeetups()
   .then((a) => {
     // console.log(typeof a, a.length, a[0], typeof a[0])
     console.log(a.join('\n'))
   })
+  .catch(console.error)
+*/
+
+utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group_level: 1 } })
+  .then((x) => x.filter((y) => y.value === 200).map((y) => y.key))
+  .then((x) => console.log(x))
   .catch(console.error)
