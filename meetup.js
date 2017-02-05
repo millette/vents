@@ -1,8 +1,8 @@
 'use strict'
 
 // self
-const meetupApi = require('./lib/meetup-api')
-const utils = require('./lib/utils')
+// const meetupApi = require('./lib/meetup-api')
+// const utils = require('./lib/utils')
 
 /*
 meetupApi.getGroup('Linux-Montreal')
