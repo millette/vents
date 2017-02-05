@@ -157,8 +157,47 @@ meetupApi.pastEventsPage('compgames')
   })
 */
 
+/*
 meetupApi.pastEvents('montrealfrancais')
   .then((x) => {
     console.log(x.headers)
     console.log(x.body.length)
   })
+*/
+
+/*
+const allPastEvents = (group) => {
+  let headers
+  return meetupApi.pastEvents(group)
+    .then((x) => {
+      headers = x.headers
+      return x.body.map((y) => {
+        y._id = 'mce:' + y.id
+        delete y.status
+        return y
+      })
+    })
+    .then(utils.bulk)
+    .then((x) => {
+      x.headers = headers
+      return x
+    })
+    .catch((e) => console.error('pastEvents err:', e))
+}
+
+utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group: true } })
+  .then((x) => x.filter((y) => y.value === 200).map((y) => y.key))
+  .then((groups) =>
+    meetupApi.recursor({
+      query: allPastEvents,
+      next: () => groups.pop() || false,
+      first: () => groups.pop() || false
+    })
+  )
+  .then((a) => {
+    console.log(a.headers)
+    console.log(a.body.length)
+    console.log(a.body)
+  })
+  .catch(console.error)
+*/
