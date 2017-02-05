@@ -118,18 +118,31 @@ utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group: true } 
     })
   )
   .then((a) => {
+    console.log(a.headers)
     console.log(a.body.length)
   })
   .catch(console.error)
 */
 
+/*
 meetupApi.pastEventsPage({
 // scroll=since%3A2014-12-20T17%3A00%3A00.000-05%3A00
   // scroll: 'since:2014-12-20T17:00:00.000-05:00',
   scroll: 'since:2017-02-18T14:00:00.000-05:00',
   group: 'compgames'
 })
+*/
+
+// meetupApi.pastEvents('compgames')
+meetupApi.pastEvents('montrealfrancais')
+// meetupApi.pastEvents('pitonneux')
   .then((x) => {
     console.log(x.headers)
     console.log(x.body.length)
   })
+
+/*
+utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group: true } })
+  .then((x) => x.filter((y) => y.value === 200).map((y) => y.key))
+  .then(console.log)
+*/
