@@ -133,6 +133,7 @@ meetupApi.pastEventsPage({
 })
 */
 
+/*
 // meetupApi.pastEvents('compgames')
 meetupApi.pastEvents('montrealfrancais')
 // meetupApi.pastEvents('pitonneux')
@@ -140,9 +141,24 @@ meetupApi.pastEvents('montrealfrancais')
     console.log(x.headers)
     console.log(x.body.length)
   })
+*/
 
 /*
 utils.getView('vents', 'meetupevents', { onlyRows: true, query: { group: true } })
   .then((x) => x.filter((y) => y.value === 200).map((y) => y.key))
   .then(console.log)
 */
+
+/*
+meetupApi.pastEventsPage('compgames')
+  .then((x) => {
+    console.log(x.headers)
+    console.log(x.body.length)
+  })
+*/
+
+meetupApi.pastEvents('montrealfrancais')
+  .then((x) => {
+    console.log(x.headers)
+    console.log(x.body.length)
+  })
