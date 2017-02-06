@@ -20,6 +20,7 @@
 
 ## Events
 * Meetup.com
+* Eventbrite.ca
 * Update future adl events (or detect changes and apply?)
 
 ## Email
