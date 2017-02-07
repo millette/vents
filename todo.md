@@ -39,10 +39,6 @@
 * Produce newsletter every week
 * Send email
 
-## Data processing
-* Calais
-* etc.
-
 ## Unit tests
 * Hapi like (code/lab) tests, but with ava?
 * Improve coverage
