@@ -40,7 +40,8 @@ test('week, only rows', async t => {
 
 test(
   'week, only rows fail',
-  async t => await t.throws(
+  // async t => await t.throws(
+  t => t.throws(
     utils.week('2017s-01-01', { onlyRows: true }),
     'Malformed date.'
   )
