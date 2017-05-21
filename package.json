@@ -17,8 +17,8 @@
     "confidence": "^3.0.2",
     "couchdb-push": "^2.3.2",
     "delay": "^2.0.0",
-    "dotenv-safe": "^4.0.3",
-    "glob": "^7.1.1",
+    "dotenv-safe": "^4.0.4",
+    "glob": "^7.1.2",
     "glue": "^4.1.0",
     "got": "^6.7.1",
     "hapi": "^16.1.1",
@@ -31,7 +31,7 @@
     "promise-parallel-throttle": "^2.2.0",
     "update-notifier": "^2.1.0",
     "vision": "^4.1.1",
-    "wreck": "^12.0.0"
+    "wreck": "^12.2.0"
   },
   "devDependencies": {
     "ava": "^0.19.1",
