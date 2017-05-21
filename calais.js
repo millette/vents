@@ -28,9 +28,11 @@ const woot = (doc) => {
 
 const fixDocs = (x) => Throttle.all(
   x.map((doc) => woot.bind(null, doc)),
-  1,
-  false,
-  (ack) => console.log('...', Date(), ack.amountStarted, ack.amountRejected)
+  {
+    maxInProgress: 1,
+    failFast: false,
+    progressCallback: (ack) => console.log('...', Date(), ack.amountStarted, ack.amountRejected)
+  }
 )
 
 if (DRY_RUN) {
